@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>Home</title>
+   
+    {% include "includes/_favicon.html" %}
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/carousel.css')}}" rel="stylesheet">
+  </head>
+  <body>
+ 
+   {% include "includes/_header.html" %}
+
+    <main role="main">
+
+    {% include "includes/_main.html" %}
+
+
+      <!-- FOOTER -->
+         <!-- Footer -->
+       <div style="padding-top: 290px;">
+        <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <p>&copy; Copyright {{ now.year }} &middot; ITS oudjirasigns &middot; All reight reserved!</p>
+          </div>
+        </div>
+      </footer>
+     </div>
+      <!-- End of Footer -->
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for("static", filename="js/jquery-3.2.1.slim.min.js")}}"><\/script>')</script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="{{ url_for('static', filename='js/holder.min.js') }}"></script>
+  </body>
+</html>

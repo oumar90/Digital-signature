@@ -1,0 +1,61 @@
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fab fa-digital-ocean"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">ITS oudjirasigns</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/profile">
+          <i class="far fa-user"></i>
+          <span>Profile</span></a>
+      </li>
+
+          <li class="nav-item active">
+        <a class="nav-link" href="/envoyer_message">
+          <i class="fas fa-sms"></i>
+          <span>Envoyer document</span></a>
+      </li>
+
+        <li class="nav-item active">
+        <a class="nav-link" href="/recevoir_message">
+        <i class="fas fa-envelope"></i>
+          <span>Recevoir document</span></a>
+      </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="/generer_clef">
+          <i class="fas fa-key"></i>
+          <span>Générer paire de clef</span></a>
+      </li>
+
+        <li class="nav-item active">
+        <a class="nav-link" href="/afficher_clef">
+          <i class="fas fa-database"></i>
+          <span>Clés publiques</span></a>
+      </li>
+          <li class="nav-item active">
+        <a class="nav-link" href="/demande_certificat">
+          <i class="fas fa-award"></i>
+          <span>Demande de certificat</span></a>
+      </li>
+
+    {% if current_user.pseudo == 'ITS' %}
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+        </li>
+            <li class="nav-item active">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-archive"></i>
+            <span>Archives</span></a>
+        </li>
+   
+    {% endif %}
+    </ul>

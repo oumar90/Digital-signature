@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Générer clef</title>
+		{% include "includes/_favicon.html" %}
+		<!-- Custom fonts for this template-->
+		<link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+		 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+		
+		<!-- Custom styles for this template-->
+		<link href="{{url_for('static', filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
+		
+	</head>
+	<body id="page-top">
+		<!-- Page Wrapper -->
+		<div id="wrapper">
+			<!-- Sidebar -->
+			{% include "includes/_sidebar.html" %}
+			<!-- End of Sidebar -->
+			<!-- Content Wrapper -->
+			<div id="content-wrapper" class="d-flex flex-column">
+				<!-- Main Content -->
+				<div id="content">
+					<!-- Topbar -->
+					{% include "includes/_navbar.html" %}
+					<!-- End of Topbar -->
+					<!-- Begin Page Content -->
+					<div class="container-fluid">
+						{% include "includes/_message_flash.html" %}
+						      <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <a href="{{url_for('static', filename='keys/' + current_user.pseudo + 'private.pem')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Télécharger votre clef privée</a>
+          </div>
+						
+						<div class="row">
+							<!-- Area Chart -->
+							<div class="col-xl-8 col-lg-7">
+								<div class="card shadow mb-5">
+									<!-- Card Header - Dropdown -->
+									<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+										<h6 class="m-0 font-weight-bold text-primary">Générer votre paire de clef RSA</h6>
+									</div>
+									<form action="/generer_clef" method="POST" style="padding-left: 10px;">
+										<div class="form-row ">
+											<div class="col-lg-4 my-4">
+												<label for="taile">Taille de clef :</label>
+												<input type="text" class="form-control" id="taille" name="taille" placeholder="par defaut 2048">
+											</div>
+											<div class="col-lg-4 my-4">
+												<label for="date">Date d'expiration :</label>
+												<input type="date" class="form-control" id="date" name="date">
+											</div>
+											<div class="col-lg-4 my-4">
+												<label for="bouton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+												<button type="submit" class="btn btn-primary">Génerer et sauvegarder une paire de clé</button>
+											</div>
+										</div>
+									</form>
+									<hr>
+									<button type="submit"  class="btn btn-outline-primary" onclick="afficherCacherForm()" id="cacherAfficher" name="cacherAfficher">
+										Afficher le résultat
+									</button>
+									
+									<fieldset id="afficherForm" style="display: none;">
+										<div class="col-lg-12">
+											<div class="form-group">
+												<label for="publickeys">Clé public:</label>
+												<textarea name="publickeys" cols="10" rows="5" class="form-control">{{ pub }}</textarea>
+											</div>
+											<div class="form-group">
+												<label for="privatekeys">Clé privée:</label>
+													<textarea name="privatekeys" cols="20" rows="10" class="form-control">{{ priv }}
+												</textarea>
+											</div>
+										</div>
+									
+									</fieldset>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<!-- /.container-fluid -->
+				</div>
+				<!-- End of Main Content -->
+				<!-- Footer -->
+				<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<p>&copy; Copyright {{ now.year }} &middot; ITS oudjirasigns &middot; All reight reserved!</p>
+						</div>
+					</div>
+				</footer>
+				<!-- End of Footer -->
+			</div>
+			
+			<!-- End of Content Wrapper -->
+		</div>
+		<!-- End of Page Wrapper -->
+		
+		<!-- Bootstrap core JavaScript-->
+		<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="{{ url_for('static', filename='js/sb-admin-2.min.js')}}"></script>
+		<!-- Page level plugins -->
+		<script src="{{ url_for('static', filename='vendor/chart.js/Chart.min.js')}}"></script>
+		<!-- Page level custom scripts -->
+		<script src="{{ url_for('static', filename='js/demo/chart-area-demo.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/demo/chart-pie-demo.js')}}"></script>
+			<script>
+			function afficherCacherForm(){
+				if(document.getElementById("cacherAfficher").checked){
+					document.getElementById("afficherForm").style.display = 'none';
+				}else {
+					document.getElementById("afficherForm").style.display = 'block';
+					
+				}
+			}
+			// $(document).ready(function() {
+			//   $("#cacherAfficher").click(function() {
+			//     $("#afficherForm").toggle();
+			//   });
+			// });
+		</script>
+	</body>
+</html>

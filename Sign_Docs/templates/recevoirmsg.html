@@ -1,0 +1,28 @@
+ <table class="table table-sm table-striped table-bordered">
+                       
+                          <thead>
+                            <th>Description</th>
+                            <th>Action</th>
+                          </thead>
+                           <tbody> 
+                           
+                    {% for msg in  messages %}
+                     <tr>
+                      <!-- <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> -->
+                            <td> 
+                            <a href="/recevoir_message_un/{{msg.id_msg}}">{{ msg.author.nom  }} {{ msg.author.prenom }} : {{ msg.contenu|truncate(40) }}
+                            </a>
+                            </td>
+                            <td>
+                            <form action="delete_message/{{msg.id_msg}}" method="GET">
+                              <input type="hidden" value="{{ msg.id_msg }}" name="id">
+                              <input type="submit" class="btn btn-outline-warning" value="Supprimer">
+                            </form>
+                            </td>
+                        <!--   </li>
+                        </ul> -->
+                      </tr>
+                      {% endfor %}
+                    </tbody> 
+                  </table>
